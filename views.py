@@ -1,6 +1,7 @@
 import re
 
 from django.shortcuts import render, redirect
+from django.urls import reverse
 
 from notes.models import Notes
 
@@ -27,8 +28,8 @@ def new_note(request):
         unique_text = set(re.findall(r"[\w']+", text.lower()))
         unique_count = len(unique_text)
         Notes.objects.create(text=text, unique_count=unique_count)
-        # TODO remove hardcoded link
-        return redirect('/notes')
+        url = reverse('notes')
+        return redirect(url)
 
     return render(
         request=request,
