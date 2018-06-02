@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}
+Заметки
+{% endblock %}
+
+
+
+{% block content %}
+<h3>Заметки</h3>
+<table border="2">
+    <thead>
+    <tr>
+        <th>Дата</th>
+        <th>Текст</th>
+        <th>Кол-во уникальных слов</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for note in notes %}
+        <tr>
+            <td>{{note.date}}</td>
+            <td>{{note.short_text}}...</td>
+            <td>{{note.unique_count}}</td>
+
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
